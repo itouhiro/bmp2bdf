@@ -1,0 +1,67 @@
+/*
+ * bmp2bdf  --  enable to modify glyphs in bdf fonts
+ * version: 0.1
+ * date:    Mon Jan 29 12:07:00 2001
+ * author:  ITOU Hiroki (itouh@lycos.ne.jp)
+ */
+
+
+●説明
+        bdf2bmp と連係して、BDFフォントの文字の形を変更することが
+        できるツール
+
+
+●使いかた
+        まず、変更したい BDFフォントから bdf2bmp (このツールでは
+        ない) を使って BMP画像を作ります。
+        画像エディタ (Adobe Photoshopとか The GIMPとか)を使用して、
+        その BMP画像の文字の形を変更します。
+        そのあとで、bmp2bdf (このツール) を使って、文字の形が更新
+        されたBDFフォントを作ることができます。
+
+        $ bmp2bdf [numberOfColumns] input.bdf input.bmp output.bdf
+
+        numberOfColumns は省略できます(省略された場合のコラム数は
+        32 となります)
+
+
+●具体例
+        courR14.bdf というBDFファイルを用意しました。
+        まず bdf2bmpを使って BMPファイルを作ります。
+                $ bdf2bmp courR14.bdf courR14.bmp
+        そして、courR14.bmpに画像エディタで変更を加えます。
+        たとえば、数字のゼロに 斜め線を加えてみましょう。
+        そして、courR14new.bmpというファイル名で保存します。
+
+        そうして
+                $ bmp2bdf courR14.bdf courR14new.bmp courR14new.bdf
+        とすれば、新しい BDFファイル courR14new.bdfのできあがり。
+
+
+●制限
+        o  bdf2bmp が生成した BMP画像だけ受けつけます
+           (-w オプションをつけたのもつけてないのも可)
+        o  Windows形式、8bitカラー(256色)、非圧縮の BMP画像だけ可
+        o  画像エディタで編集する前とした後で、カラーパレット(CLUT)
+           の順番が変わってしまったのは可
+
+        逆にいうと、24bitカラー(フルカラー, 1677万色)のBMP画像は
+        不可。4bitカラー(16色)の BMP画像も不可。
+
+        このソフトは内部では、黒とそれ以外の色、という区別をして
+        います。白地や文字仕切りや灰色は同じものとみなすので、
+        編集するときに文字仕切りを白地で上書きしてしまった..とかは
+        気にしなくていいです。
+        カラーパレットの色が多少変化してしまっていても、
+        黒 (R,G,B) = (0,0,0) が変わっていないならば、問題ない
+        でしょう。
+
+
+●著作権
+        Copyright (c) 2001 ITOU Hiroki All rights reserved.
+        フリーソフトウェアです。
+        詳しくはソースコードに記述してあります。
+
+--
+itouh
+http://www.geocities.co.jp/Playtown-Domino/7021/
