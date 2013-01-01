@@ -1,7 +1,7 @@
 /*
  * bmp2bdf  --  enable to modify glyphs in a bdf font
  * version: 0.2
- * author:  ITOU Hiroki (itouh@lycos.ne.jp)
+ * author:  ITOU Hiroki
  */
 
 
@@ -65,7 +65,3 @@ version 0.1
         Copyright (c) 2001 ITOU Hiroki All rights reserved.
         フリーソフトウェアです。
         詳しくはソースコードに記述してあります。
-
---
-itouh
-http://www.geocities.co.jp/Playtown-Domino/7021/
